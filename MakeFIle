@@ -1,0 +1,12 @@
+mig:
+	python3 manage.py makemigrations
+	python3 manage.py migrate
+
+celery:
+	celery -A root worker -l INFO
+
+image:
+	docker build -t imtohon_image .
+
+container:
+	docker run --name sardor_imtihon -p 8000:8000 -d imtihon_image
