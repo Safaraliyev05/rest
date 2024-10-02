@@ -36,7 +36,8 @@ class FavouriteModelSerializer(ModelSerializer):
 class ProductListModelSerializer(ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ('description',)
 
     def to_representation(self, instance: Product):
         repr = super().to_representation(instance)
