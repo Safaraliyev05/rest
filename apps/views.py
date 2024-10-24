@@ -55,6 +55,7 @@ class SendEmailAPIView(GenericAPIView):
         message = f"Your verification code is {code}"
         # send_to_email(message, email)
         send_to_email.delay(message, email)
+
         email = serializer.data['email']
         code = randint(1000, 9999)
         cache.set(email, code, timeout=120)
